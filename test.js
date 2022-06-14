@@ -22,3 +22,11 @@ function numberToFixed() {
     const someNumber = inputNumber.toFixed(2);
     console.log(someNumber);
 }
+
+const formatter = new Intl.NumberFormat('pl', {style: "currency", currency: "PLN"});
+
+const someNumber = 123232;
+
+const formattedNumber = formatter.format(someNumber);
+
+console.log(formattedNumber);
