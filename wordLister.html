@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="highlighter.css" /> -->
+    <style>
+      .found {
+        background-color: rgba(246, 246, 0, 0.707);
+      }
+      body {
+        margin: 15px;
+      }
+      textarea {
+        width: 100%;
+        height: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Creating a List of Frequent Words</h1>
+    <form id="textsearch">
+      <textarea id="incoming"></textarea>
+      <p>Search pattern: <input id="pattern" type="text" /></p>
+    </form>
+    <!-- <button id="searchSubmit">Search for pattern</button> -->
+    <div id="textResult"></div>
+    <button id="generateListFrequentWords">
+      Generate a list of frequent words
+    </button>
+
+    <script>
+      // document.getElementById("searchSubmit").onclick = function () {
+      //   // Get the search pattern
+      //   const pattern = document.getElementById("pattern").value;
+      //   const regex = new RegExp(pattern, "g");
+
+      //   // Get the text to search
+      //   const searchText = document.getElementById("incoming").value;
+
+      //   let highlightedResult = "<pre>";
+      //   let startPosition = 0;
+      //   let endPosition = 0;
+
+      //   //Find each match, and build the result
+      //   const matches = searchText.matchAll(regex);
+      //   for (const match of matches) {
+      //     endPosition = match.index;
+
+      //     highlightedResult += searchText.slice(startPosition, endPosition);
+
+      //     highlightedResult += "<span class='found'>" + match[0] + "</span>";
+      //     startPosition = endPosition + match[0].length;
+      //   }
+
+      //   highlightedResult += searchText.slice(startPosition);
+
+      //   highlightedResult += "</pre>";
+
+      //   document.getElementById("searchResult").innerHTML = highlightedResult;
+      // };
+
+      document.getElementById("generateListFrequentWords").onclick =
+        function () {
+          const userText = document.getElementById("incoming").value;
+          // const pattern = ',';
+          // const regex = new RegExp(pattern, 'g');
+
+          const processedText = userText.toLowerCase().replaceAll(",", "");
+
+          let wordList = processedText.split(" ");
+          let wordSet = new Set(wordList);
+          console.log(wordSet);
+
+          for (const word of wordList) {
+          }
+        };
+    </script>
+
+    <!-- <script src="highlighter.js"></script> -->
+  </body>
+</html>
