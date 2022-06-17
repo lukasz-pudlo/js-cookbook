@@ -71,11 +71,19 @@
           const processedText = userText.toLowerCase().replaceAll(",", "");
 
           let wordList = processedText.split(" ");
+          // Before creating the set, organise the words in list by their frequency
+
           let wordSet = new Set(wordList);
           console.log(wordSet);
 
+          let wordListElement = "<ul>";
           for (const word of wordList) {
+            wordListElement += `<li> ${word} </li>`;
           }
+
+          wordListElement += "</ul>";
+
+          document.getElementById("textResult").innerHTML = wordListElement;
         };
     </script>
 
