@@ -31,6 +31,8 @@
       Generate a list of frequent words
     </button>
 
+    <button id="areArraysEqual">Check if arrays are equal</button>
+
     <script>
       // document.getElementById("searchSubmit").onclick = function () {
       //   // Get the search pattern
@@ -68,13 +70,39 @@
           // const pattern = ',';
           // const regex = new RegExp(pattern, 'g');
 
-          const processedText = userText.toLowerCase().replaceAll(",", "");
+          const processedText = userText
+            .toLowerCase()
+            .replaceAll(",", "")
+            .replaceAll(".", "")
+            .replaceAll('"', "")
+            .replaceAll("„", "");
 
           let wordList = processedText.split(" ");
           // Before creating the set, organise the words in list by their frequency
 
+          let wordObjects = [];
+
           let wordSet = new Set(wordList);
-          console.log(wordSet);
+          // console.log(wordSet);
+
+          wordList.forEach(function (word, index, array) {
+            // console.log(word);
+            // wordObjects.push({ word: word });
+            // console.log(wordObjects);
+            console.log(word);
+            console.log(index);
+            // console.log(array);
+          });
+
+          // if (Array.isArray(wordList)) {
+          //   console.log(`${wordList} is an array`);
+          // }
+
+          // if (Array.isArray(wordSet)) {
+          //   console.log(`${wordSet} is an array`);
+          // } else {
+          //   console.log("wordSet is not an array");
+          // }
 
           let wordListElement = "<ul>";
           for (const word of wordList) {
@@ -85,6 +113,32 @@
 
           document.getElementById("textResult").innerHTML = wordListElement;
         };
+
+      let arrayOne = ["coca-cola", "pepsi-cola", "coke"];
+      let arrayTwo = ["coca-cola", "pepsi-cola", "coke"];
+      let arrayThree = ["coca-cola", "pepsi-cola", "fanta"];
+
+      let prices = ["10", "5", "25"];
+
+      function areArraysEqual(arrayA, arrayB) {
+        // First check if they are arrays
+        if (!Array.isArray(arrayA) || !Array.isArray(arrayB)) {
+          return false;
+        }
+        // Check if they are just two references pointing to the same array
+        else if (arrayA === arrayB) {
+          return true;
+        }
+        // Check if they have the same length
+        else if (arrayA.length !== arrayB.length) {
+          return false;
+        } else {
+          for (let i = 0; i < arrayA.length; ++i) {
+            if (arrayA[i] !== arrayB[i]) return false;
+          }
+          return true;
+        }
+      }
     </script>
 
     <!-- <script src="highlighter.js"></script> -->
