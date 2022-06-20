@@ -85,14 +85,25 @@
           let wordSet = new Set(wordList);
           // console.log(wordSet);
 
-          wordList.forEach(function (word, index, array) {
-            // console.log(word);
-            // wordObjects.push({ word: word });
-            // console.log(wordObjects);
-            console.log(word);
-            console.log(index);
-            // console.log(array);
-          });
+          // wordList.forEach(function (word, index, array) {
+          //   // console.log(word);
+          //   // wordObjects.push({ word: word });
+          //   // console.log(wordObjects);
+          //   // console.log(word);
+          //   // console.log(index);
+          //   // console.log(array);
+          //   wordObjects.push({ word, index });
+          // });
+          // console.log(wordObjects);
+
+          for (let i = 0; i < wordList.length; i++) {
+            let word = wordList[i],
+              wordCount = 0;
+            if (wordList.includes(word)) wordCount += 1;
+            wordObjects.push({ word, wordCount });
+          }
+
+          console.log(wordObjects);
 
           // if (Array.isArray(wordList)) {
           //   console.log(`${wordList} is an array`);
