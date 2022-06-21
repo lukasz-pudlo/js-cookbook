@@ -109,6 +109,12 @@
 
           console.log(wordObjects);
 
+          let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
+          console.log(wordObjectsCopy);
+
+          let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
+          console.log(objsAndCopy);
+
           let wordListElement = "<ul>";
           for (const word of wordList) {
             wordListElement += `<li> ${word} </li>`;
