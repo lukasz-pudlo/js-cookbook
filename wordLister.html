@@ -109,11 +109,18 @@
 
           console.log(wordObjects);
 
-          let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
-          console.log(wordObjectsCopy);
+          // let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
+          // console.log(wordObjectsCopy);
 
-          let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
-          console.log(objsAndCopy);
+          // let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
+          // console.log(objsAndCopy);
+
+          let aWord = wordObjects.filter((word) => word.wordCount > 1);
+          console.log(aWord);
+
+          // function startsWithD(word) {
+          //   return wordObjects
+          // }
 
           let wordListElement = "<ul>";
           for (const word of wordList) {
