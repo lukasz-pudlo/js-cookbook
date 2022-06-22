@@ -115,12 +115,29 @@
           // let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
           // console.log(objsAndCopy);
 
-          let aWord = wordObjects.filter((word) => word.wordCount > 1);
-          console.log(aWord);
+          // let aWord = wordObjects.filter((word) => word.wordCount > 1);
+          // console.log(aWord);
+
+          let listFromObject = wordObjects.map(Object.values);
+          console.log(listFromObject);
+          stringifiedList = JSON.stringify(listFromObject);
+
+          // Look at the first element of each entry looked at in the loop, which is now looking at an array consisting of lists
+          // let wordsListfromObject = [];
+
+          // for (i = 0; i < listFromObject.length; ++i) {
+          //   let word = listFromObject[i][0];
+          //   wordslistFromObject.push(word);
+          // }
+          // console.log(wordsListfromObject);
 
           // function startsWithD(word) {
           //   return wordObjects
           // }
+
+          const numbers = [0, 2, 8, 78, 99, 102, 255];
+
+          const reducerFunction = function (accumulator, element) {};
 
           let wordListElement = "<ul>";
           for (const word of wordList) {
