@@ -135,9 +135,29 @@
           //   return wordObjects
           // }
 
-          const numbers = [0, 2, 8, 78, 99, 102, 255];
+          const numbers = [500, 0, 2, 8, 256, 78, 800, 99, 102];
 
-          const reducerFunction = function (accumulator, element) {};
+          // const reducerFunction = function (accumulator, element) {
+          //   // Add the current value to the running total in the accumulator.
+          //   const newTotal = accumulator + element;
+          //   return newTotal;
+          // };
+
+          // const total = numbers.reduce(reducerFunction, 0);
+          // console.log(total);
+
+          // Explanation for myself of how I think the below function that returns the highest value in the array works.
+          // The function looks at each element of the array and compares the values stored in acc and val. Since, the reducer function
+          // wasn't supplied with an extra argument (as was in the one above, where the reduce function
+          // was supplied the callback function reducerFunction and 0 after it, which means that the accumulator was set to 0 instead
+          // of being set to the value of the first element in the array), the value of acc is set to the value of the first element
+          // in the array. The reduce function checks whether acc is greater than val and returns acc if it is or val if it isn't.
+          // By returning the acc, I mean that it is stored in its memory until the end of the array. Until it has stepped through or
+          // looked at all elements in the array. This means that the result of the evaluation isn't lost and if after having looked at
+          // all elements in the array, it doesn't find a val that is larger than the currently stored value of acc, acc is returned at the
+          // end.
+          const max = numbers.reduce((acc, val) => (acc > val ? acc : val));
+          console.log(max);
 
           let wordListElement = "<ul>";
           for (const word of wordList) {
