@@ -33,6 +33,10 @@
 
     <button id="areArraysEqual">Check if arrays are equal</button>
 
+    <button id="runTest">Run Test</button>
+
+    <button id="anotherTest">Another Test</button>
+
     <script>
       // document.getElementById("searchSubmit").onclick = function () {
       //   // Get the search pattern
@@ -156,18 +160,60 @@
           // looked at all elements in the array. This means that the result of the evaluation isn't lost and if after having looked at
           // all elements in the array, it doesn't find a val that is larger than the currently stored value of acc, acc is returned at the
           // end.
-          const max = numbers.reduce((acc, val) => (acc > val ? acc : val));
-          console.log(max);
+          // const max = numbers.reduce((acc, val) => (acc > val ? acc : val));
+          // console.log(max);
 
-          let wordListElement = "<ul>";
-          for (const word of wordList) {
-            wordListElement += `<li> ${word} </li>`;
-          }
+          // const average =
+          //   numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
+
+          // console.log(average);
+
+          // const maxSpread = Math.max(...numbers);
+          // console.log(`The maximum value is ${maxSpread}`);
+
+          // const containsLettersOnly = function (element) {
+          //   const textExp = /^[a-zA-Z]+$/;
+          //   return textExp.test(element);
+          // };
+
+          // const mysteryItems = ["**", 123, "aaa", "abc", "-", 46, "AAA"];
+
+          // let result = mysteryItems.every(containsLettersOnly);
+          // console.log(result);
+
+          // let wordListElement = "<ul>";
+          // for (const word of wordList) {
+          //   wordListElement += `<li> ${word} </li>`;
+          // }
 
           wordListElement += "</ul>";
 
           document.getElementById("textResult").innerHTML = wordListElement;
         };
+
+      document
+        .getElementById("runTest")
+        .addEventListener("click", buttonClicked);
+
+      function buttonClicked() {
+        setTimeout(showMessage, 2000);
+      }
+
+      function showMessage() {
+        console.log("You clicked the button 2 seconds ago");
+      }
+
+      document
+        .getElementById("anotherTest")
+        .addEventListener("click", anotherButtonClicked);
+
+      function anotherButtonClicked() {
+        setTimeout(showAnotherMessage, 1000);
+      }
+
+      function showAnotherMessage() {
+        console.log("This is another message - clicked 1 second ago");
+      }
 
       function countToTen() {
         let total = 0,
