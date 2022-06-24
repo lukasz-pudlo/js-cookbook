@@ -35,8 +35,6 @@
 
     <button id="runTest">Run Test</button>
 
-    <button id="anotherTest">Another Test</button>
-
     <script>
       // document.getElementById("searchSubmit").onclick = function () {
       //   // Get the search pattern
@@ -139,8 +137,6 @@
           //   return wordObjects
           // }
 
-          const numbers = [500, 0, 2, 8, 256, 78, 800, 99, 102];
-
           // const reducerFunction = function (accumulator, element) {
           //   // Add the current value to the running total in the accumulator.
           //   const newTotal = accumulator + element;
@@ -195,24 +191,90 @@
         .getElementById("runTest")
         .addEventListener("click", buttonClicked);
 
+      // function buttonClicked() {
+      //   setTimeout(showMessage, 1000);
+      // }
+
+      // function showMessage() {
+      //   console.log("You clicked this button exactly one second ago!");
+      // }
+
+      // function buttonClicked() {
+      //   const timeoutCallback = function showMessage() {
+      //     console.log(
+      //       "(Using pattern 2) You clicked this message 1 second ago"
+      //     );
+      //   };
+      //   setTimeout(timeoutCallback, 1000);
+      // }
+
+      // function buttonClicked() {
+      //   setTimeout(function showMessage() {
+      //     console.log("Pattern number 3: You clicked this button a second ago");
+      //   }, 1000);
+      // }
+
+      // function buttonClicked() {
+      //   setTimeout(showMessage, 500);
+      // }
+
+      // function showMessage() {
+      //   console.log(
+      //     "This is another message, this time it should appear sooner"
+      //   );
+      // }
+
+      // function buttonClicked() {
+      //   const timeoutCallback = function () {
+      //     console.log(
+      //       "This a timed out message using the second pattern of calling a function from another function"
+      //     );
+      //   };
+      //   setTimeout(timeoutCallback, 500);
+      // }
+
+      // function buttonClicked() {
+      //   setTimeout(function showMessage() {
+      //     console.log(
+      //       "This message has been generated using the third pattern. The button was clicked half a second ago"
+      //     );
+      //   }, 500);
+      // }
+
+      // function buttonClicked() {
+      //   function logTime(time) {
+      //     console.log(`Logging at: ${time.toLocaleTimeString()}`);
+      //   }
+
+      //   console.log("About to call callYouBack()");
+      //   callYouBack(logTime);
+      //   console.log("All finished");
+      // }
+
+      // function callYouBack(callbackFunction) {
+      //   console.log("Starting callYouBack()");
+      //   callbackFunction(new Date());
+
+      //   console.log("Ending callYouBack()");
+      // }
+
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
       function buttonClicked() {
-        setTimeout(showMessage, 2000);
-      }
+        // function squareNumber(number) {
+        //   return number ** 2;
+        // }
 
-      function showMessage() {
-        console.log("You clicked the button 2 seconds ago");
-      }
+        // const squares = numbers.map(squareNumber);
+        // const squares = numbers.map((number) => number ** 2);
+        // console.log(`This is the result of the arrow function: ${squares}`);
+        // const myFunc = (number) => number ** 2;
+        // const squaredNumber = myFunc(5);
+        // console.log(squaredNumber);
 
-      document
-        .getElementById("anotherTest")
-        .addEventListener("click", anotherButtonClicked);
-
-      function anotherButtonClicked() {
-        setTimeout(showAnotherMessage, 1000);
-      }
-
-      function showAnotherMessage() {
-        console.log("This is another message - clicked 1 second ago");
+        const myFunc = (number, power) => number ** power;
+        const squaredNumber = myFunc(10, 3);
+        console.log(squaredNumber);
       }
 
       function countToTen() {
