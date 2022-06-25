@@ -40,6 +40,15 @@
     </button>
 
     <script>
+      function createCounter() {
+        let count = 0;
+        function counter() {
+          count += 1;
+          console.log(count);
+        }
+        return counter;
+      }
+      const counterFunction = createCounter();
       // document.getElementById("searchSubmit").onclick = function () {
       //   // Get the search pattern
       //   const pattern = document.getElementById("pattern").value;
@@ -204,10 +213,8 @@
         // // function powerNumber(number) {
         // //   return number ** power;
         // // }
-
         // // const powerNumbers = numbers.map(powerNumber);
         // // console.log(powerNumbers);
-
         // const powerNumbers = numbers.map((number) => number ** power);
         // console.log(powerNumbers);
         // const myFunc = (number) => number ** 2;
@@ -216,10 +223,40 @@
         // function raiseToPower(number, power) {
         //   return number ** power;
         // }
-
-        const myFunc = (number, power) => number ** power;
-        const result = myFunc(10, 3);
-        console.log(result);
+        // const myFunc = (number, power) => number ** power;
+        // const result = myFunc(10, 3);
+        // console.log(result);
+        // function dateDifferenceInSeconds(
+        //   newerDate,
+        //   olderDate,
+        //   { discardTime, discardYears, precision } = {}
+        // ) {
+        //   if (discardTime) {
+        //     newerDate = newerDate.setHours(0, 0, 0, 0);
+        //     olderDate = olderDate.setHours(0, 0, 0, 0);
+        //   }
+        //   if (discardYears) {
+        //     newerDate = newerDate.setYear(0);
+        //     olderDate = olderDate.setYear(0);
+        //   }
+        //   const differenceInSeconds =
+        //     (newerDate.getTime() - olderDate.getTime()) / 1000;
+        //   return differenceInSeconds.toFixed(precision);
+        // }
+        // const newDate = new Date();
+        // const oldDate = new Date(2010, 1, 10);
+        // let difference = dateDifferenceInSeconds(newDate, oldDate);
+        // console.log(difference);
+        // function greetingMaker(greeting) {
+        //   function addName(name) {
+        //     return `${greeting} ${name}`;
+        //   }
+        //   return addName;
+        // }
+        // const dayTimeGreeting = greetingMaker("Have a Good Day");
+        // const nightTimeGreeting = greetingMaker("Have a Good Evening");
+        // const completeGreeting = dayTimeGreeting("Paul");
+        // console.log(completeGreeting);
       }
 
       // function buttonClicked() {
