@@ -35,6 +35,10 @@
 
     <button id="runTest">Run Test</button>
 
+    <input type="text" id="power" /><button id="toPower">
+      Enter the power
+    </button>
+
     <script>
       // document.getElementById("searchSubmit").onclick = function () {
       //   // Get the search pattern
@@ -65,131 +69,158 @@
 
       //   document.getElementById("searchResult").innerHTML = highlightedResult;
       // };
+      document
+        .getElementById("generateListFrequentWords")
+        .addEventListener("click", generateListFrequentWords);
 
-      document.getElementById("generateListFrequentWords").onclick =
-        function () {
-          const userText = document.getElementById("incoming").value;
-          // const pattern = ',';
-          // const regex = new RegExp(pattern, 'g');
+      function generateListFrequentWords() {
+        const userText = document.getElementById("incoming").value;
+        // const pattern = ',';
+        // const regex = new RegExp(pattern, 'g');
 
-          const processedText = userText
-            .toLowerCase()
-            .replaceAll(",", "")
-            .replaceAll(".", "")
-            .replaceAll('"', "")
-            .replaceAll("„", "");
+        const processedText = userText
+          .toLowerCase()
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .replaceAll('"', "")
+          .replaceAll("„", "");
 
-          let wordList = processedText.split(" ");
-          // Before creating the set, organise the words in list by their frequency
+        let wordList = processedText.split(" ");
+        // Before creating the set, organise the words in list by their frequency
 
-          let wordObjects = [];
+        let wordObjects = [];
 
-          // let wordSet = new Set(wordList);
+        // let wordSet = new Set(wordList);
 
-          // Inititiate the first loop that checks each word in wordList
-          for (let i = 0; i < wordList.length; i++) {
-            let word = wordList[i],
-              wordCount = 0;
-            // The second loop is used to compare and count the occurrences of the word from the first loop
-            for (let i = 0; i < wordList.length; i++) {
-              let wordToCompare = wordList[i];
-              if (word == wordToCompare) {
-                wordCount += 1;
-              }
-            }
-            wordObjects.push({ word, wordCount });
-            // Clear the word count after each outer loop
+        // Inititiate the first loop that checks each word in wordList
+        for (let i = 0; i < wordList.length; i++) {
+          let word = wordList[i],
             wordCount = 0;
+          // The second loop is used to compare and count the occurrences of the word from the first loop
+          for (let i = 0; i < wordList.length; i++) {
+            let wordToCompare = wordList[i];
+            if (word == wordToCompare) {
+              wordCount += 1;
+            }
           }
+          wordObjects.push({ word, wordCount });
+          // Clear the word count after each outer loop
+          wordCount = 0;
+        }
 
-          // console.log(wordObjects);
+        // console.log(wordObjects);
 
-          // Sort the words by order of frequency
-          wordObjects.sort((a, b) => {
-            return b.wordCount - a.wordCount;
-          });
+        // Sort the words by order of frequency
+        wordObjects.sort((a, b) => {
+          return b.wordCount - a.wordCount;
+        });
 
-          console.log(wordObjects);
+        console.log(wordObjects);
 
-          // let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
-          // console.log(wordObjectsCopy);
+        // let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
+        // console.log(wordObjectsCopy);
 
-          // let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
-          // console.log(objsAndCopy);
+        // let objsAndCopy = [...wordObjects, ...wordObjectsCopy];
+        // console.log(objsAndCopy);
 
-          // let aWord = wordObjects.filter((word) => word.wordCount > 1);
-          // console.log(aWord);
+        // let aWord = wordObjects.filter((word) => word.wordCount > 1);
+        // console.log(aWord);
 
-          let listFromObject = wordObjects.map(Object.values);
-          console.log(listFromObject);
-          stringifiedList = JSON.stringify(listFromObject);
+        let listFromObject = wordObjects.map(Object.values);
+        console.log(listFromObject);
+        stringifiedList = JSON.stringify(listFromObject);
 
-          // Look at the first element of each entry looked at in the loop, which is now looking at an array consisting of lists
-          // let wordsListfromObject = [];
+        // Look at the first element of each entry looked at in the loop, which is now looking at an array consisting of lists
+        // let wordsListfromObject = [];
 
-          // for (i = 0; i < listFromObject.length; ++i) {
-          //   let word = listFromObject[i][0];
-          //   wordslistFromObject.push(word);
-          // }
-          // console.log(wordsListfromObject);
+        // for (i = 0; i < listFromObject.length; ++i) {
+        //   let word = listFromObject[i][0];
+        //   wordslistFromObject.push(word);
+        // }
+        // console.log(wordsListfromObject);
 
-          // function startsWithD(word) {
-          //   return wordObjects
-          // }
+        // function startsWithD(word) {
+        //   return wordObjects
+        // }
 
-          // const reducerFunction = function (accumulator, element) {
-          //   // Add the current value to the running total in the accumulator.
-          //   const newTotal = accumulator + element;
-          //   return newTotal;
-          // };
+        // const reducerFunction = function (accumulator, element) {
+        //   // Add the current value to the running total in the accumulator.
+        //   const newTotal = accumulator + element;
+        //   return newTotal;
+        // };
 
-          // const total = numbers.reduce(reducerFunction, 0);
-          // console.log(total);
+        // const total = numbers.reduce(reducerFunction, 0);
+        // console.log(total);
 
-          // Explanation for myself of how I think the below function that returns the highest value in the array works.
-          // The function looks at each element of the array and compares the values stored in acc and val. Since, the reducer function
-          // wasn't supplied with an extra argument (as was in the one above, where the reduce function
-          // was supplied the callback function reducerFunction and 0 after it, which means that the accumulator was set to 0 instead
-          // of being set to the value of the first element in the array), the value of acc is set to the value of the first element
-          // in the array. The reduce function checks whether acc is greater than val and returns acc if it is or val if it isn't.
-          // By returning the acc, I mean that it is stored in its memory until the end of the array. Until it has stepped through or
-          // looked at all elements in the array. This means that the result of the evaluation isn't lost and if after having looked at
-          // all elements in the array, it doesn't find a val that is larger than the currently stored value of acc, acc is returned at the
-          // end.
-          // const max = numbers.reduce((acc, val) => (acc > val ? acc : val));
-          // console.log(max);
+        // Explanation for myself of how I think the below function that returns the highest value in the array works.
+        // The function looks at each element of the array and compares the values stored in acc and val. Since, the reducer function
+        // wasn't supplied with an extra argument (as was in the one above, where the reduce function
+        // was supplied the callback function reducerFunction and 0 after it, which means that the accumulator was set to 0 instead
+        // of being set to the value of the first element in the array), the value of acc is set to the value of the first element
+        // in the array. The reduce function checks whether acc is greater than val and returns acc if it is or val if it isn't.
+        // By returning the acc, I mean that it is stored in its memory until the end of the array. Until it has stepped through or
+        // looked at all elements in the array. This means that the result of the evaluation isn't lost and if after having looked at
+        // all elements in the array, it doesn't find a val that is larger than the currently stored value of acc, acc is returned at the
+        // end.
+        // const max = numbers.reduce((acc, val) => (acc > val ? acc : val));
+        // console.log(max);
 
-          // const average =
-          //   numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
+        // const average =
+        //   numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
 
-          // console.log(average);
+        // console.log(average);
 
-          // const maxSpread = Math.max(...numbers);
-          // console.log(`The maximum value is ${maxSpread}`);
+        // const maxSpread = Math.max(...numbers);
+        // console.log(`The maximum value is ${maxSpread}`);
 
-          // const containsLettersOnly = function (element) {
-          //   const textExp = /^[a-zA-Z]+$/;
-          //   return textExp.test(element);
-          // };
+        // const containsLettersOnly = function (element) {
+        //   const textExp = /^[a-zA-Z]+$/;
+        //   return textExp.test(element);
+        // };
 
-          // const mysteryItems = ["**", 123, "aaa", "abc", "-", 46, "AAA"];
+        // const mysteryItems = ["**", 123, "aaa", "abc", "-", 46, "AAA"];
 
-          // let result = mysteryItems.every(containsLettersOnly);
-          // console.log(result);
+        // let result = mysteryItems.every(containsLettersOnly);
+        // console.log(result);
 
-          // let wordListElement = "<ul>";
-          // for (const word of wordList) {
-          //   wordListElement += `<li> ${word} </li>`;
-          // }
+        // let wordListElement = "<ul>";
+        // for (const word of wordList) {
+        //   wordListElement += `<li> ${word} </li>`;
+        // }
 
-          wordListElement += "</ul>";
+        wordListElement += "</ul>";
 
-          document.getElementById("textResult").innerHTML = wordListElement;
-        };
+        document.getElementById("textResult").innerHTML = wordListElement;
+      }
 
       document
         .getElementById("runTest")
         .addEventListener("click", buttonClicked);
+
+      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      function buttonClicked() {
+        // let power = document.getElementById("power").value;
+        // // function powerNumber(number) {
+        // //   return number ** power;
+        // // }
+
+        // // const powerNumbers = numbers.map(powerNumber);
+        // // console.log(powerNumbers);
+
+        // const powerNumbers = numbers.map((number) => number ** power);
+        // console.log(powerNumbers);
+        // const myFunc = (number) => number ** 2;
+        // const result = numbers.map(myFunc);
+        // console.log(result);
+        // function raiseToPower(number, power) {
+        //   return number ** power;
+        // }
+
+        const myFunc = (number, power) => number ** power;
+        const result = myFunc(10, 3);
+        console.log(result);
+      }
 
       // function buttonClicked() {
       //   setTimeout(showMessage, 1000);
@@ -258,24 +289,54 @@
       //   console.log("Ending callYouBack()");
       // }
 
-      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-      function buttonClicked() {
-        // function squareNumber(number) {
-        //   return number ** 2;
-        // }
+      // function buttonClicked() {
+      //   // function squareNumber(number) {
+      //   //   return number ** 2;
+      //   // }
 
-        // const squares = numbers.map(squareNumber);
-        // const squares = numbers.map((number) => number ** 2);
-        // console.log(`This is the result of the arrow function: ${squares}`);
-        // const myFunc = (number) => number ** 2;
-        // const squaredNumber = myFunc(5);
-        // console.log(squaredNumber);
+      //   // const squares = numbers.map(squareNumber);
+      //   // const squares = numbers.map((number) => number ** 2);
+      //   // console.log(`This is the result of the arrow function: ${squares}`);
+      //   // const myFunc = (number) => number ** 2;
+      //   // const squaredNumber = myFunc(5);
+      //   // console.log(squaredNumber);
 
-        const myFunc = (number, power) => number ** power;
-        const squaredNumber = myFunc(10, 3);
-        console.log(squaredNumber);
-      }
+      //   const myFunc = (number, power) => number ** power;
+      //   const squaredNumber = myFunc(10, 3);
+      //   console.log(squaredNumber);
+      // }
+
+      // function buttonClicked() {
+      //   function logTime(time) {
+      //     console.log(`Logging at: ${time.toLocaleTimeString()}`);
+      //   }
+      //   console.log(`About to call callYouBack()`);
+      //   callYouBack(logTime);
+      //   console.log(`All done`);
+      // }
+
+      // function callYouBack(callbackFunction) {
+      //   console.log(`Starting callYouBack()`);
+      //   callbackFunction(new Date());
+      //   console.log("Ending callYouBack");
+      // }
+
+      // function buttonClicked() {
+      //   function logTime(time) {
+      //     console.log(`Logging at: ${time.toLocaleTimeString()}`);
+      //   }
+      //   console.log("About to call callYouBack()");
+      //   callYouBack(logTime);
+      //   console.log("All done");
+      // }
+
+      // function callYouBack(callbackFunction) {
+      //   console.log("Starting callYouBack()");
+      //   callbackFunction(new Date());
+      //   console.log("Ending callYouBack()");
+      // }
 
       function countToTen() {
         let total = 0,
