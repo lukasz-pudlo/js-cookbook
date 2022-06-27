@@ -38,29 +38,73 @@
     <input type="text" id="power" /><button id="toPower">
       Enter the power
     </button>
+    <div id="counterDiv"></div>
 
     <script>
-      function partial(fn, ...args) {
-        return function (...restArgs) {
-          return fn(...args, restArgs);
+      function Counter(from, to, divElement) {
+        this.currentCount = from;
+        this.finishCount = to;
+        this.element = divElement;
+
+        this.incrementCounter = function () {
+          this.currentCount -= 1;
+          this.element.textContent = this.currentCount;
+
+          if (this.currentCount > this.finishCount) {
+            setTimeout(this.incrementCounter.bind(this), 1000);
+          }
+        };
+        this.startCounter = function () {
+          this.incrementCounter();
         };
       }
 
-      function raiseToPower(exponent, number) {
-        return number ** exponent;
-      }
+      const counter = new Counter(20, 0, document.getElementById("counterDiv"));
 
-      const cubeIt = partial(raiseToPower, 3);
+      window.onload = function () {
+        counter.startCounter();
+      };
 
-      function makeString(prefix, suffix, str) {
-        return `${prefix}${str}${suffix}`;
-      }
+      // window.onload = function () {
+      //   window.name = window;
 
-      const named = partial(makeString, "&#", ";");
+      //   const newObject = {
+      //     name: "object",
 
-      const namedBound = makeString.bind(undefined, "&#", ";");
+      //     sayGreeting: function () {
+      //       console.log(`Now this is easy, ${this.name}`);
 
-      const cubeItBound = raiseToPower.bind(undefined, 3);
+      //       const nestedGreeting = function (greeting) {
+      //         console.log(`${greeting} ${this.name}`);
+      //       }.bind(this);
+
+      //       nestedGreeting("hello");
+      //     },
+      //   };
+      //   newObject.sayGreeting();
+      // };
+
+      // function partial(fn, ...args) {
+      //   return function (...restArgs) {
+      //     return fn(...args, restArgs);
+      //   };
+      // }
+
+      // function raiseToPower(exponent, number) {
+      //   return number ** exponent;
+      // }
+
+      // const cubeIt = partial(raiseToPower, 3);
+
+      // function makeString(prefix, suffix, str) {
+      //   return `${prefix}${str}${suffix}`;
+      // }
+
+      // const named = partial(makeString, "&#", ";");
+
+      // const namedBound = makeString.bind(undefined, "&#", ";");
+
+      // const cubeItBound = raiseToPower.bind(undefined, 3);
 
       // console.log(cubeIt(9));
 
