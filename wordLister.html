@@ -46,11 +46,21 @@
         };
       }
 
-      function raiseToPower(exponent, power) {
-        return power ** exponent;
+      function raiseToPower(exponent, number) {
+        return number ** exponent;
       }
 
       const cubeIt = partial(raiseToPower, 3);
+
+      function makeString(prefix, suffix, str) {
+        return `${prefix}${str}${suffix}`;
+      }
+
+      const named = partial(makeString, "&#", ";");
+
+      const namedBound = makeString.bind(undefined, "&#", ";");
+
+      const cubeItBound = raiseToPower.bind(undefined, 3);
 
       // console.log(cubeIt(9));
 
