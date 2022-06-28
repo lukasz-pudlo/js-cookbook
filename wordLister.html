@@ -41,29 +41,60 @@
     <div id="counterDiv"></div>
 
     <script>
-      function Counter(from, to, divElement) {
-        this.currentCount = from;
-        this.finishCount = to;
-        this.element = divElement;
-
-        this.incrementCounter = function () {
-          this.currentCount -= 1;
-          this.element.textContent = this.currentCount;
-
-          if (this.currentCount > this.finishCount) {
-            setTimeout(this.incrementCounter.bind(this), 1000);
-          }
-        };
-        this.startCounter = function () {
-          this.incrementCounter();
-        };
+      // Check if this is correct
+      function fibonacci(n) {
+        return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
       }
 
-      const counter = new Counter(20, 0, document.getElementById("counterDiv"));
+      function factorial(n) {
+        return n <= 1 ? 1 : n * factorial(n - 1);
+      }
 
-      window.onload = function () {
-        counter.startCounter();
-      };
+      function factorialFn(n) {
+        let result = 1;
+        for (let number = 1; number < n; ++number) {
+          result = result * (number + 1);
+        }
+
+        return result;
+      }
+
+      // Still in progress
+      function fibonacciFn(n) {
+        let result = 0;
+        if (n < 2) {
+          result = n;
+        } else {
+          for (number = 0; number < n; ++number) {
+            result = result + number;
+          }
+        }
+        return result;
+      }
+
+      // function Counter(from, to, divElement) {
+      //   this.currentCount = from;
+      //   this.finishCount = to;
+      //   this.element = divElement;
+
+      //   this.incrementCounter = function () {
+      //     this.currentCount -= 1;
+      //     this.element.textContent = this.currentCount;
+
+      //     if (this.currentCount > this.finishCount) {
+      //       setTimeout(this.incrementCounter.bind(this), 1000);
+      //     }
+      //   };
+      //   this.startCounter = function () {
+      //     this.incrementCounter();
+      //   };
+      // }
+
+      // const counter = new Counter(20, 0, document.getElementById("counterDiv"));
+
+      // window.onload = function () {
+      //   counter.startCounter();
+      // };
 
       // window.onload = function () {
       //   window.name = window;
