@@ -474,6 +474,18 @@
       //   console.log("Ending callYouBack()");
       // }
 
+      function buttonClicked() {
+        const sentence =
+          "This is one sentence. This is a sentence with a list of items:" +
+          "cherries, oranges, apples, bananas. That was the list of items.";
+
+        const start = sentence.indexOf(":");
+        const end = sentence.indexOf(".", start + 1);
+
+        console.log(start);
+        console.log(end);
+      }
+
       function countToTen() {
         let total = 0,
           count = 1;
