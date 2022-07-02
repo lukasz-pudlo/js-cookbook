@@ -46,6 +46,25 @@
         return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
       }
 
+      // Still in progress
+      function fibonacciFn(n) {
+        let nPrevious = 0;
+        let nSecondPrevious = 0;
+        let result = 0;
+        if (n <= 1) {
+          result = n;
+        } else {
+          nPrevious = 1;
+          nSecondPrevious = 0;
+          for (number = 1; number < n; ++number) {
+            result = nPrevious + nSecondPrevious;
+            nSecondPrevious = nPrevious;
+            nPrevious = result;
+          }
+        }
+        return result;
+      }
+
       function factorial(n) {
         return n <= 1 ? 1 : n * factorial(n - 1);
       }
@@ -56,19 +75,6 @@
           result = result * (number + 1);
         }
 
-        return result;
-      }
-
-      // Still in progress
-      function fibonacciFn(n) {
-        let result = 0;
-        if (n < 2) {
-          result = n;
-        } else {
-          for (number = 0; number < n; ++number) {
-            result = result + number;
-          }
-        }
         return result;
       }
 
@@ -473,6 +479,15 @@
       //   callbackFunction(new Date());
       //   console.log("Ending callYouBack()");
       // }
+
+      function greetingMaker(greeting) {
+        function addName(name) {
+          return `${greeting} ${name}`;
+        }
+        return addName;
+      }
+
+      const dayTimeGreeting = greetingMaker("Morning");
 
       function buttonClicked() {
         const sentence =
