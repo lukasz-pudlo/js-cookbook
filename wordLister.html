@@ -313,6 +313,31 @@
 
       const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+      function buttonClicked() {
+        function logTime(time) {
+          console.log(`Logging at: ${time.toLocaleTimeString()}`);
+        }
+
+        console.log("About to call callYouBack()");
+        callYouBack(logTime);
+        console.log("All finished");
+
+        function callYouBack(callbackFunction) {
+          callbackFunction(new Date());
+          console.log("Ending callYouBack()");
+        }
+      }
+
+      // function buttonClicked() {
+      //   setTimeout(showMessage, 2000);
+      // }
+
+      // function showMessage() {
+      //   console.log(
+      //     "This is the message for which you had to wait two seconds"
+      //   );
+      // }
+
       // function buttonClicked() {
       // let power = document.getElementById("power").value;
       // // function powerNumber(number) {
@@ -489,17 +514,17 @@
 
       const dayTimeGreeting = greetingMaker("Morning");
 
-      function buttonClicked() {
-        const sentence =
-          "This is one sentence. This is a sentence with a list of items:" +
-          "cherries, oranges, apples, bananas. That was the list of items.";
+      // function buttonClicked() {
+      //   const sentence =
+      //     "This is one sentence. This is a sentence with a list of items:" +
+      //     "cherries, oranges, apples, bananas. That was the list of items.";
 
-        const start = sentence.indexOf(":");
-        const end = sentence.indexOf(".", start + 1);
+      //   const start = sentence.indexOf(":");
+      //   const end = sentence.indexOf(".", start + 1);
 
-        console.log(start);
-        console.log(end);
-      }
+      //   console.log(start);
+      //   console.log(end);
+      // }
 
       function countToTen() {
         let total = 0,
