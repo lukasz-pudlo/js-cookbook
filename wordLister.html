@@ -328,6 +328,24 @@
         }
       }
 
+      const dynamicProperty = "nickname";
+      const dynamicPropertyValue = "The Izz";
+
+      const i = 10;
+
+      const employee = {
+        firstName: "Lisa",
+        [dynamicProperty]: dynamicPropertyValue,
+        ["sequence" + i]: 1,
+      };
+
+      const address = {
+        country: "Poland",
+        city: "Warsaw",
+        streetNum: "102",
+        streetName: "Marszałkowska",
+      };
+
       // function buttonClicked() {
       //   setTimeout(showMessage, 2000);
       // }
