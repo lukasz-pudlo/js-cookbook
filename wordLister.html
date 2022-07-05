@@ -229,7 +229,42 @@
           return b.wordCount - a.wordCount;
         });
 
-        console.log(wordObjects);
+        wordObjectsKeys = Object.keys(wordObjects);
+
+        let newWordList = [];
+
+        for (let i = 0; i < wordObjects.length; i++) {
+          newWordList.push(wordObjects[i].word);
+        }
+
+        newWordList = new Set(newWordList);
+        wordArray = Array.from(newWordList);
+
+        console.log(wordArray);
+
+        const dictionary = new Object();
+
+        wordArray.forEach((word) => {
+          dictionary.word;
+        });
+
+        console.log(dictionary);
+
+        async function translate(text) {
+          let res = await axios.post(
+            `https://translation.googleapis.com/language/translate/v2?key=${AIzaSyBOoz_7FooKqcOCNfrxZ6vXp16SHndGUjs}`,
+            { q: text, target: "en" }
+          );
+          let translation = res.data.data.translations[0].translatedText;
+          return translation;
+        }
+
+        let translatedVue = translate("vue");
+        console.log(translatedVue);
+
+        // console.log(wordObjects[0].word);
+
+        // console.log(wordObjectsKeys);
 
         // let wordObjectsCopy = wordObjects.map((element) => ({ ...element }));
         // console.log(wordObjectsCopy);
@@ -240,9 +275,9 @@
         // let aWord = wordObjects.filter((word) => word.wordCount > 1);
         // console.log(aWord);
 
-        let listFromObject = wordObjects.map(Object.values);
-        console.log(listFromObject);
-        stringifiedList = JSON.stringify(listFromObject);
+        // let listFromObject = wordObjects.map(Object.values);
+        // console.log(listFromObject);
+        // stringifiedList = JSON.stringify(listFromObject);
 
         // Look at the first element of each entry looked at in the loop, which is now looking at an array consisting of lists
         // let wordsListfromObject = [];
@@ -297,10 +332,11 @@
         // let result = mysteryItems.every(containsLettersOnly);
         // console.log(result);
 
-        // let wordListElement = "<ul>";
-        // for (const word of wordList) {
-        //   wordListElement += `<li> ${word} </li>`;
-        // }
+        let wordListElement = "<ul>";
+
+        for (const word of wordArray) {
+          wordListElement += `<li> ${word} </li>`;
+        }
 
         wordListElement += "</ul>";
 
