@@ -252,7 +252,9 @@
 
         async function translate(text) {
           let res = await axios.post(
-            `https://translation.googleapis.com/language/translate/v2?key=${AIzaSyBOoz_7FooKqcOCNfrxZ6vXp16SHndGUjs}`,
+            `https://translation.googleapis.com/language/translate/v2?key=${
+              api - key
+            }`,
             { q: text, target: "en" }
           );
           let translation = res.data.data.translations[0].translatedText;
