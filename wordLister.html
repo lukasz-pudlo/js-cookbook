@@ -229,7 +229,7 @@
           return b.wordCount - a.wordCount;
         });
 
-        wordObjectsKeys = Object.keys(wordObjects);
+        const wordObjectsKeys = Reflect.ownKeys(wordObjects);
 
         let newWordList = [];
 
@@ -237,10 +237,12 @@
           newWordList.push(wordObjects[i].word);
         }
 
-        newWordList = new Set(newWordList);
-        wordArray = Array.from(newWordList);
+        // newWordList = new Set(newWordList);
+        // wordArray = Array.from(newWordList);
 
-        console.log(wordArray);
+        let wordArray = [...new Set(newWordList)];
+
+        // console.log(wordArray);
 
         const dictionary = new Object();
 
@@ -248,21 +250,55 @@
           dictionary.word;
         });
 
-        console.log(dictionary);
+        // console.log(dictionary);
 
-        async function translate(text) {
-          let res = await axios.post(
-            `https://translation.googleapis.com/language/translate/v2?key=${
-              api - key
-            }`,
-            { q: text, target: "en" }
-          );
-          let translation = res.data.data.translations[0].translatedText;
-          return translation;
+        for (const property of wordObjectsKeys) {
+          console.log(`Property: ${property}, Value: ${wordObjects[property]}`);
         }
 
-        let translatedVue = translate("vue");
-        console.log(translatedVue);
+        const address = {
+          country: "Poland",
+          streetName: "Sądowa",
+          streetNumber: "7",
+        };
+
+        const customer = {
+          name: "Weronika",
+          lastName: "Czaszowiczyńska",
+        };
+
+        const customerAddress = { ...customer, ...address };
+        console.log(customerAddress);
+
+        const data = {};
+
+        Object.defineProperty(data, "type", {
+          value: "primary",
+          enumerable: true,
+        });
+
+        Object.defineProperty(data, "id", {
+          value: 1,
+          writable: true,
+        });
+
+        for (prop in data) {
+          console.log(prop);
+        }
+
+        // async function translate(text) {
+        //   let res = await axios.post(
+        //     `https://translation.googleapis.com/language/translate/v2?key=${
+        //       api - key
+        //     }`,
+        //     { q: text, target: "en" }
+        //   );
+        //   let translation = res.data.data.translations[0].translatedText;
+        //   return translation;
+        // }
+
+        // let translatedVue = translate("vue");
+        // console.log(translatedVue);
 
         // console.log(wordObjects[0].word);
 
