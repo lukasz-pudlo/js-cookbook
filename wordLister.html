@@ -286,6 +286,32 @@
           console.log(prop);
         }
 
+        const product = {
+          name: "banana",
+        };
+
+        const propertyChecker = {
+          set: function (target, property, value) {
+            if (property === "price") {
+              if (typeof value !== "number") {
+                throw new TypeError("Price is not a number");
+              } else if (value <= 0) {
+                throw new RangeError("Price must be greater than zero");
+              }
+            } else if (property !== "name") {
+              throw new ReferenceError(`Property '${property}' is not valid`);
+            }
+            target[property] = value;
+          },
+        };
+
+        const proxy = new Proxy(product, propertyChecker);
+
+        proxy.name = "apple";
+        proxy.price = 10;
+        proxy.category = "organic";
+        console.log(product);
+
         // async function translate(text) {
         //   let res = await axios.post(
         //     `https://translation.googleapis.com/language/translate/v2?key=${
