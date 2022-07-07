@@ -282,35 +282,122 @@
           writable: true,
         });
 
-        for (prop in data) {
-          console.log(prop);
+        // for (prop in data) {
+        //   console.log(prop);
+        // }
+
+        // const product = {
+        //   name: "banana",
+        // };
+
+        // const propertyChecker = {
+        //   set: function (target, property, value) {
+        //     if (property === "price") {
+        //       if (typeof value !== "number") {
+        //         throw new TypeError("Price is not a number");
+        //       } else if (value <= 0) {
+        //         throw new RangeError("Price must be greater than zero");
+        //       }
+        //     } else if (property !== "name") {
+        //       throw new ReferenceError(`Property '${property}' is not valid`);
+        //     }
+        //     target[property] = value;
+        //   },
+        // };
+
+        // const proxy = new Proxy(product, propertyChecker);
+
+        // proxy.name = "apple";
+        // proxy.price = 10;
+        // proxy.category = "organic";
+        // console.log(product);
+
+        // const handler = {
+        //   get: function (array, index) {
+        //     if (array[index] === 0) {
+        //       return false;
+        //     } else {
+        //       return true;
+        //     }
+        //   },
+        // };
+
+        // const numbers = [0, 1, 0, 0];
+
+        // const proxy = new Proxy(numbers, handler);
+
+        // function enumeratorFunction(item) {
+        //   console.log(proxy[item]);
+        // }
+
+        // numbers.forEach(enumeratorFunction);
+
+        // const animal = {
+        //   name: "Red Fox",
+        //   class: "Mammalia",
+        //   order: "Carnivora",
+        //   family: "Canidae",
+        //   genus: "Vulpes",
+        //   species: "Vulpes vulpes",
+        // };
+
+        // // const animalCopy = { ...animal };
+        // const animalCopy = Object.assign({}, animal);
+
+        // console.log(`This is the original object:
+        // ${animal.name}
+        // and this is the copy:
+        // ${animalCopy.name}`);
+
+        // const student = {
+        //   firstName: "Lukasz",
+        //   lastName: "Pudlo",
+        //   scores: [70, 85, 76, 99, 78],
+        // };
+
+        // function cloneStudent(student) {
+        //   const studentCopy = { ...student };
+        //   studentCopy.scores = [...studentCopy.scores];
+        //   return studentCopy;
+        // }
+
+        // const studentCopy = cloneStudent(student);
+
+        // studentCopy.scores[0] = 80;
+
+        // console.log(student.scores[0]);
+        // console.log(studentCopy.scores[0]);
+
+        class Student {
+          constructor(firstName, lastName, testScores) {
+            (this.firstName = firstName),
+              (this.lastName = lastName),
+              (this.testScores = testScores);
+          }
+          clone() {
+            return new Student(this.firstName, this.lastName, [
+              ...this.testScores,
+            ]);
+          }
         }
 
-        const product = {
-          name: "banana",
-        };
+        const student = new Student("Lukasz", "Pudlo", [78, 87, 98, 88, 100]);
+        const studentCopy = student.clone();
 
-        const propertyChecker = {
-          set: function (target, property, value) {
-            if (property === "price") {
-              if (typeof value !== "number") {
-                throw new TypeError("Price is not a number");
-              } else if (value <= 0) {
-                throw new RangeError("Price must be greater than zero");
-              }
-            } else if (property !== "name") {
-              throw new ReferenceError(`Property '${property}' is not valid`);
-            }
-            target[property] = value;
-          },
-        };
+        studentCopy.testScores[0] = 99;
 
-        const proxy = new Proxy(product, propertyChecker);
+        console.log(student.testScores[0]);
+        console.log(studentCopy.testScores[0]);
 
-        proxy.name = "apple";
-        proxy.price = 10;
-        proxy.category = "organic";
-        console.log(product);
+        const newObj = {};
+
+        const uniqueId = Symbol();
+        newObj[uniqueId] = "No two alike";
+
+        const anotherUniqueId = Symbol();
+        newObj[anotherUniqueId] = "This will not clash either";
+
+        console.log(newObj);
 
         // async function translate(text) {
         //   let res = await axios.post(
