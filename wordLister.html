@@ -282,6 +282,64 @@
           writable: true,
         });
 
+        // class Person {
+        //   constructor(firstName, lastName, dateOfBirth) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //     this.dateOfBirth = dateOfBirth;
+        //   }
+        //   swapNames() {
+        //     [this.firstName, this.lastName] = [this.lastName, this.firstName];
+        //   }
+        //   get age() {
+        //     if (this.dateOfBirth instanceof Date) {
+        //       const today = new Date();
+        //       let age = today.getFullYear() - this.dateOfBirth.getFullYear();
+
+        //       const monthDiff = today.getMonth() - this.dateOfBirth.getMonth();
+        //       if (
+        //         monthDiff < 0 ||
+        //         (monthDiff === 0 &&
+        //           today.getDate() < this.dateOfBirth.getDate())
+        //       ) {
+        //         age -= 1;
+        //       }
+        //       return age;
+        //     }
+        //   }
+        // }
+
+        // const justFirstName = new Person("Lukasz");
+        // console.log(justFirstName);
+
+        class Person {
+          constructor(firstName, lastName, date) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.setDateOfBirth(date);
+          }
+          get dateOfBirth() {
+            return this._dateOfBirth;
+          }
+
+          setDateOfBirth(value) {
+            if (value instanceof Date && value < Date.now()) {
+              this._dateOfBirth = value;
+            } else {
+              throw new TypeError(
+                "Birhdate needs to be a valid date in the past"
+              );
+            }
+          }
+        }
+
+        const newPerson = new Person("Lukasz", "Pudlo", new Date(2150, 10, 3));
+        console.log(newPerson.dateOfBirth);
+        // console.log(newPerson);
+        // console.log(newPerson.firstName);
+        // newPerson.swapNames();
+        // console.log(newPerson);
+
         // for (prop in data) {
         //   console.log(prop);
         // }
@@ -368,36 +426,36 @@
         // console.log(student.scores[0]);
         // console.log(studentCopy.scores[0]);
 
-        class Student {
-          constructor(firstName, lastName, testScores) {
-            (this.firstName = firstName),
-              (this.lastName = lastName),
-              (this.testScores = testScores);
-          }
-          clone() {
-            return new Student(this.firstName, this.lastName, [
-              ...this.testScores,
-            ]);
-          }
-        }
+        // class Student {
+        //   constructor(firstName, lastName, testScores) {
+        //     (this.firstName = firstName),
+        //       (this.lastName = lastName),
+        //       (this.testScores = testScores);
+        //   }
+        //   clone() {
+        //     return new Student(this.firstName, this.lastName, [
+        //       ...this.testScores,
+        //     ]);
+        //   }
+        // }
 
-        const student = new Student("Lukasz", "Pudlo", [78, 87, 98, 88, 100]);
-        const studentCopy = student.clone();
+        // const student = new Student("Lukasz", "Pudlo", [78, 87, 98, 88, 100]);
+        // const studentCopy = student.clone();
 
-        studentCopy.testScores[0] = 99;
+        // studentCopy.testScores[0] = 99;
 
-        console.log(student.testScores[0]);
-        console.log(studentCopy.testScores[0]);
+        // console.log(student.testScores[0]);
+        // console.log(studentCopy.testScores[0]);
 
-        const newObj = {};
+        // const newObj = {};
 
-        const uniqueId = Symbol();
-        newObj[uniqueId] = "No two alike";
+        // const uniqueId = Symbol();
+        // newObj[uniqueId] = "No two alike";
 
-        const anotherUniqueId = Symbol();
-        newObj[anotherUniqueId] = "This will not clash either";
+        // const anotherUniqueId = Symbol();
+        // newObj[anotherUniqueId] = "This will not clash either";
 
-        console.log(newObj);
+        // console.log(newObj);
 
         // async function translate(text) {
         //   let res = await axios.post(
@@ -767,7 +825,6 @@
         }
       }
     </script>
-
     <!-- <script src="highlighter.js"></script> -->
   </body>
 </html>
