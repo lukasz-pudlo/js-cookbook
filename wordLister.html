@@ -312,33 +312,168 @@
         // const justFirstName = new Person("Lukasz");
         // console.log(justFirstName);
 
-        class Person {
-          constructor(firstName, lastName, date) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.setDateOfBirth(date);
-          }
-          get dateOfBirth() {
-            return this._dateOfBirth;
-          }
+        // class Person {
+        //   constructor(firstName, lastName, date) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //     this.setDateOfBirth(date);
+        //   }
+        //   get dateOfBirth() {
+        //     return this._dateOfBirth;
+        //   }
 
-          setDateOfBirth(value) {
-            if (value instanceof Date && value < Date.now()) {
-              this._dateOfBirth = value;
-            } else {
-              throw new TypeError(
-                "Birhdate needs to be a valid date in the past"
-              );
-            }
-          }
-        }
+        //   setDateOfBirth(value) {
+        //     if (value instanceof Date && value < Date.now()) {
+        //       this._dateOfBirth = value;
+        //     } else {
+        //       throw new TypeError(
+        //         "Birhdate needs to be a valid date in the past"
+        //       );
+        //     }
+        //   }
+        // }
 
-        const newPerson = new Person("Lukasz", "Pudlo", new Date(2150, 10, 3));
-        console.log(newPerson.dateOfBirth);
+        // const newPerson = new Person("Lukasz", "Pudlo", new Date(2150, 10, 3));
+        // console.log(newPerson.dateOfBirth);
         // console.log(newPerson);
         // console.log(newPerson.firstName);
         // newPerson.swapNames();
         // console.log(newPerson);
+
+        // class Person {
+        //   constructor(firstName, lastName) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //   }
+        //   toString() {
+        //     return `${this.lastName}, ${this.firstName}`;
+        //   }
+        // }
+
+        // const newPerson = new Person("Lukasz", "Pudlowski");
+        // console.log(newPerson.toString());
+        // const message = `The name is ${newPerson}`;
+        // console.log(message);
+
+        // function Person(firstName, lastName) {
+        //   this.firstName = firstName;
+        //   this.lastName = lastName;
+
+        //   this.swapNames = function () {
+        //     [this.firstName, this.lastName] = [this.lastName, this.firstName];
+        //   };
+        // }
+
+        // const newPerson = new Person("Francois", "Dhaene");
+        // console.log(newPerson.firstName);
+
+        // newPerson.swapNames();
+
+        // console.log(newPerson.firstName);
+
+        // function Person(firstName, lastName) {
+        //   this.firstName = firstName;
+        //   this.lastName = lastName;
+        // }
+
+        // Person.prototype.swapNames = function () {
+        //   [this.firstName, this.lastName] = [this.lastName, this.firstName];
+        // };
+
+        // const newPerson = new Person("Kelly", "Jornet");
+        // newPerson.swapNames();
+        // console.log(newPerson.firstName);
+
+        // class Book {
+        //   constructor(title, author, price, publishedDate) {
+        //     this.title = title;
+        //     this.author = author;
+        //     this.price = price;
+        //     this.publishedDate = publishedDate;
+        //   }
+
+        //   raisePrice(percent) {
+        //     const increase = this.price * percent;
+        //     this.price += Math.round(increase) / 100;
+        //     return this;
+        //   }
+
+        //   releaseNewEdition() {
+        //     this.publishedDate = new Date();
+        //     return this;
+        //   }
+        // }
+
+        // const book = new Book(
+        //   "Introduction to Mathematics",
+        //   "Wilfred Algebrwich",
+        //   20.99,
+        //   new Date(2022, 1, 1)
+        // );
+
+        // console.log(book);
+        // console.log(book.raisePrice(10));
+
+        // class Book {
+        //   constructor(title, author, price, publishedDate) {
+        //     this.title = title;
+        //     this.author = author;
+        //     this.price = price;
+        //     this.publishedDate = publishedDate;
+        //   }
+
+        //   getRaisedPriceBook(percent) {
+        //     const increase = this.price * percent;
+        //     return new Book(
+        //       this.title,
+        //       this.author,
+        //       this.price + Math.round(increase) / 100,
+        //       this.publishedDate
+        //     );
+        //   }
+
+        //   getNewEdition() {
+        //     return new Book(this.title, this.author, this.price, new Date());
+        //   }
+        // }
+
+        // const book = new Book(
+        //   "Tako rzecze ten tam",
+        //   "Zara",
+        //   20.99,
+        //   new Date(2010, 2, 1)
+        // );
+
+        // console.log(book);
+
+        // const book2 = book.getNewEdition();
+
+        // console.log(book2);
+
+        // const book3 = book.getRaisedPriceBook(80);
+
+        // console.log(book3);
+
+        class Book {
+          constructor(title, firstName, lastName) {
+            this.title = title;
+            this.firstName = firstName;
+            this.lastName = lastName;
+          }
+
+          static createSequel(previousBook, title) {
+            return new Book(
+              title,
+              previousBook.firstName,
+              previousBook.lastName
+            );
+          }
+        }
+
+        const goodDesign = new Book("Good Design", "Polly", "Molly");
+        const sequel = Book.createSequel(goodDesign, "Even Better Design");
+        console.log(goodDesign);
+        console.log(sequel);
 
         // for (prop in data) {
         //   console.log(prop);

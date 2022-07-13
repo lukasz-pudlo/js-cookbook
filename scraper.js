@@ -6,10 +6,10 @@
 
 // const word = document.getElementById('wordToSearch').value;
 
-const word = 'ordinateur';
+const word = 'joie';
 const puppeteer = require('puppeteer');
 function run () {
-    return new Promise(async (resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
         try {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
