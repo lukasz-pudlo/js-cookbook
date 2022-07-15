@@ -454,26 +454,63 @@
 
         // console.log(book3);
 
-        class Book {
-          constructor(title, firstName, lastName) {
-            this.title = title;
+        // class Book {
+        //   constructor(title, firstName, lastName) {
+        //     this.title = title;
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //   }
+
+        //   static createSequel(previousBook, title) {
+        //     return new Book(
+        //       title,
+        //       previousBook.firstName,
+        //       previousBook.lastName
+        //     );
+        //   }
+        // }
+
+        // const goodDesign = new Book("Good Design", "Polly", "Molly");
+        // const sequel = Book.createSequel(goodDesign, "Even Better Design");
+        // console.log(goodDesign);
+        // console.log(sequel);
+
+        class Author {
+          constructor(firstName, lastName) {
             this.firstName = firstName;
             this.lastName = lastName;
           }
+        }
 
-          static createSequel(previousBook, title) {
-            return new Book(
-              title,
-              previousBook.firstName,
-              previousBook.lastName
-            );
+        class Book {
+          constructor(title, author) {
+            this.title = title;
+            this.author = author;
+          }
+
+          static createSequel(prevBook, title) {
+            return new Book(title, prevBook.author);
+          }
+
+          static createTrilogy(author, title1, title2, title3) {
+            return [
+              new Book(title1, author),
+              new Book(title2, author),
+              new Book(title3, author),
+            ];
           }
         }
 
-        const goodDesign = new Book("Good Design", "Polly", "Molly");
-        const sequel = Book.createSequel(goodDesign, "Even Better Design");
-        console.log(goodDesign);
-        console.log(sequel);
+        const author = new Author("Lukasz", "Pudlo");
+
+        const books = Book.createTrilogy(
+          author,
+          "Book Title One",
+          "Book Title Two",
+          "Book Title Three"
+        );
+
+        console.log(books);
 
         // for (prop in data) {
         //   console.log(prop);
