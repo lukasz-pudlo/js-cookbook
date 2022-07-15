@@ -482,35 +482,74 @@
           }
         }
 
-        class Book {
-          constructor(title, author) {
-            this.title = title;
-            this.author = author;
-          }
+        // class Book {
+        //   constructor(title, author) {
+        //     this.title = title;
+        //     this.author = author;
+        //   }
 
-          static createSequel(prevBook, title) {
-            return new Book(title, prevBook.author);
-          }
+        //   static createSequel(prevBook, title) {
+        //     return new Book(title, prevBook.author);
+        //   }
 
-          static createTrilogy(author, title1, title2, title3) {
-            return [
-              new Book(title1, author),
-              new Book(title2, author),
-              new Book(title3, author),
-            ];
+        //   static createTrilogy(author, title1, title2, title3) {
+        //     return [
+        //       new Book(title1, author),
+        //       new Book(title2, author),
+        //       new Book(title3, author),
+        //     ];
+        //   }
+        // }
+
+        // const author = new Author("Lukasz", "Pudlo");
+
+        // const books = Book.createTrilogy(
+        //   author,
+        //   "Book Title One",
+        //   "Book Title Two",
+        //   "Book Title Three"
+        // );
+
+        // console.log(books);
+
+        // class Book {
+        //   constructor(title, author, publishedDate) {
+        //     this.title = title;
+        //     this.author = author;
+        //     this.publishedDate = publishedDate;
+        //   }
+        // }
+
+        // class EBook extends Book {
+        //   constructor(title, author, publishedDate, format) {
+        //     super(title, author, publishedDate);
+        //     this.format = format;
+        //   }
+        // }
+
+        class Person {
+          constructor(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
           }
         }
 
-        const author = new Author("Lukasz", "Pudlo");
+        class Employee {
+          constructor(person, deparment, hireDate) {
+            this.person = person;
 
-        const books = Book.createTrilogy(
-          author,
-          "Book Title One",
-          "Book Title Two",
-          "Book Title Three"
+            this.deparment = deparment;
+            this.hireDate = hireDate;
+          }
+        }
+
+        const employee = new Employee(
+          new Person("Lukasz", "Pudlo"),
+          "Sales",
+          new Date()
         );
 
-        console.log(books);
+        console.log(employee);
 
         // for (prop in data) {
         //   console.log(prop);
