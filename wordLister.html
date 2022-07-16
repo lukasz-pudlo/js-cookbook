@@ -39,6 +39,7 @@
       Enter the power
     </button>
     <div id="counterDiv"></div>
+    <p id="status"></p>
 
     <script>
       // Check if this is correct
@@ -550,6 +551,27 @@
         );
 
         console.log(employee);
+
+        function doWorkInChunks() {
+          const statusElement = document.getElementById("status");
+
+          const startTime = Date.now();
+          let counter = 0;
+
+          statusElement.innerText = "Processing started";
+
+          const doChunkedTask = () => {
+            if (Date.now() - startTime < 10000) {
+              counter += 1;
+              statusElement.innerText = `Just generated number ${counter}`;
+
+              setTimeout(doChunkedTask, 0);
+            } else {
+              statusElement.innerText = "Processing completed";
+            }
+          };
+          doChunkedTask();
+        }
 
         // for (prop in data) {
         //   console.log(prop);
