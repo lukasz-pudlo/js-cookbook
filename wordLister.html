@@ -42,42 +42,80 @@
     <p id="status"></p>
 
     <script>
+      document.getElementById("runTest").addEventListener("click", fetchTest);
+
+      function fetchTest() {
+        fetch(
+          "https://upload.wikimedia.org/wikipedia/commons/b/b2/Eagle_nebula_pillars.jpg"
+            .then((response) => {
+              console.log(`HTTP status: ${response.status}`);
+            })
+            .catch((error) => {
+              console.error(`Error: ${error}`);
+            })
+            .finally(() => {
+              console.log("All done");
+            })
+        );
+      }
+
+      // function doWorkInChunks() {
+      //   const statusElement = document.getElementById("status");
+      //   const startTime = Date.now();
+
+      //   let counter = 0;
+
+      //   statusElement.innerText = "Processing started";
+
+      //   const doChunkedTask = () => {
+      //     if (Date.now() - startTime < 10000) {
+      //       counter += 1;
+      //       statusElement.innerText = `Just generated number ${counter}`;
+
+      //       setTimeout(doChunkedTask, 0);
+      //     } else {
+      //       statusElement.innerText = "Processing completed";
+      //     }
+      //   };
+      //   doChunkedTask();
+      // }
+
       // Check if this is correct
-      function fibonacci(n) {
-        return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
-      }
+      // function fibonacci(n) {
+      //   return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+      // }
 
-      // Still in progress
-      function fibonacciFn(n) {
-        let nPrevious = 0;
-        let nSecondPrevious = 0;
-        let result = 0;
-        if (n <= 1) {
-          result = n;
-        } else {
-          nPrevious = 1;
-          nSecondPrevious = 0;
-          for (number = 1; number < n; ++number) {
-            result = nPrevious + nSecondPrevious;
-            nSecondPrevious = nPrevious;
-            nPrevious = result;
-          }
-        }
-        return result;
-      }
+      // // Still in progress
+      // function fibonacciFn(n) {
+      //   let nPrevious = 0;
+      //   let nSecondPrevious = 0;
+      //   let result = 0;
+      //   if (n <= 1) {
+      //     result = n;
+      //   } else {
+      //     nPrevious = 1;
+      //     nSecondPrevious = 0;
+      //     for (number = 1; number < n; ++number) {
+      //       result = nPrevious + nSecondPrevious;
+      //       nSecondPrevious = nPrevious;
+      //       nPrevious = result;
+      //     }
+      //   }
+      //   return result;
+      // }
 
-      function factorial(n) {
-        return n <= 1 ? 1 : n * factorial(n - 1);
-      }
+      // function factorial(n) {
+      //   return n <= 1 ? 1 : n * factorial(n - 1);
+      // }
 
-      function factorialFn(n) {
-        let result = 1;
-        for (let number = 1; number < n; ++number) {
-          result = result * (number + 1);
-        }
+      // function factorialFn(n) {
+      //   let result = 1;
+      //   for (let number = 1; number < n; ++number) {
+      //     result = result * (number + 1);
+      //   }
 
-        return result;
-      }
+      //   return result;
+      // }
 
       // function Counter(from, to, divElement) {
       //   this.currentCount = from;
@@ -257,31 +295,31 @@
           console.log(`Property: ${property}, Value: ${wordObjects[property]}`);
         }
 
-        const address = {
-          country: "Poland",
-          streetName: "Sądowa",
-          streetNumber: "7",
-        };
+        // const address = {
+        //   country: "Poland",
+        //   streetName: "Sądowa",
+        //   streetNumber: "7",
+        // };
 
-        const customer = {
-          name: "Weronika",
-          lastName: "Czaszowiczyńska",
-        };
+        // const customer = {
+        //   name: "Weronika",
+        //   lastName: "Czaszowiczyńska",
+        // };
 
-        const customerAddress = { ...customer, ...address };
-        console.log(customerAddress);
+        // const customerAddress = { ...customer, ...address };
+        // console.log(customerAddress);
 
-        const data = {};
+        // const data = {};
 
-        Object.defineProperty(data, "type", {
-          value: "primary",
-          enumerable: true,
-        });
+        // Object.defineProperty(data, "type", {
+        //   value: "primary",
+        //   enumerable: true,
+        // });
 
-        Object.defineProperty(data, "id", {
-          value: 1,
-          writable: true,
-        });
+        // Object.defineProperty(data, "id", {
+        //   value: 1,
+        //   writable: true,
+        // });
 
         // class Person {
         //   constructor(firstName, lastName, dateOfBirth) {
@@ -476,12 +514,12 @@
         // console.log(goodDesign);
         // console.log(sequel);
 
-        class Author {
-          constructor(firstName, lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-          }
-        }
+        // class Author {
+        //   constructor(firstName, lastName) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //   }
+        // }
 
         // class Book {
         //   constructor(title, author) {
@@ -528,50 +566,50 @@
         //   }
         // }
 
-        class Person {
-          constructor(firstName, lastName) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-          }
-        }
+        // class Person {
+        //   constructor(firstName, lastName) {
+        //     this.firstName = firstName;
+        //     this.lastName = lastName;
+        //   }
+        // }
 
-        class Employee {
-          constructor(person, deparment, hireDate) {
-            this.person = person;
+        // class Employee {
+        //   constructor(person, deparment, hireDate) {
+        //     this.person = person;
 
-            this.deparment = deparment;
-            this.hireDate = hireDate;
-          }
-        }
+        //     this.deparment = deparment;
+        //     this.hireDate = hireDate;
+        //   }
+        // }
 
-        const employee = new Employee(
-          new Person("Lukasz", "Pudlo"),
-          "Sales",
-          new Date()
-        );
+        // const employee = new Employee(
+        //   new Person("Lukasz", "Pudlo"),
+        //   "Sales",
+        //   new Date()
+        // );
 
-        console.log(employee);
+        // console.log(employee);
 
-        function doWorkInChunks() {
-          const statusElement = document.getElementById("status");
+        // function doWorkInChunks() {
+        //   const statusElement = document.getElementById("status");
 
-          const startTime = Date.now();
-          let counter = 0;
+        //   const startTime = Date.now();
+        //   let counter = 0;
 
-          statusElement.innerText = "Processing started";
+        //   statusElement.innerText = "Processing started";
 
-          const doChunkedTask = () => {
-            if (Date.now() - startTime < 10000) {
-              counter += 1;
-              statusElement.innerText = `Just generated number ${counter}`;
+        //   const doChunkedTask = () => {
+        //     if (Date.now() - startTime < 10000) {
+        //       counter += 1;
+        //       statusElement.innerText = `Just generated number ${counter}`;
 
-              setTimeout(doChunkedTask, 0);
-            } else {
-              statusElement.innerText = "Processing completed";
-            }
-          };
-          doChunkedTask();
-        }
+        //       setTimeout(doChunkedTask, 0);
+        //     } else {
+        //       statusElement.innerText = "Processing completed";
+        //     }
+        //   };
+        //   doChunkedTask();
+        // }
 
         // for (prop in data) {
         //   console.log(prop);
@@ -785,44 +823,40 @@
         document.getElementById("textResult").innerHTML = wordListElement;
       }
 
-      document
-        .getElementById("runTest")
-        .addEventListener("click", buttonClicked);
+      // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      // function buttonClicked() {
+      //   function logTime(time) {
+      //     console.log(`Logging at: ${time.toLocaleTimeString()}`);
+      //   }
 
-      function buttonClicked() {
-        function logTime(time) {
-          console.log(`Logging at: ${time.toLocaleTimeString()}`);
-        }
+      //   console.log("About to call callYouBack()");
+      //   callYouBack(logTime);
+      //   console.log("All finished");
 
-        console.log("About to call callYouBack()");
-        callYouBack(logTime);
-        console.log("All finished");
+      //   function callYouBack(callbackFunction) {
+      //     callbackFunction(new Date());
+      //     console.log("Ending callYouBack()");
+      //   }
+      // }
 
-        function callYouBack(callbackFunction) {
-          callbackFunction(new Date());
-          console.log("Ending callYouBack()");
-        }
-      }
+      // const dynamicProperty = "nickname";
+      // const dynamicPropertyValue = "The Izz";
 
-      const dynamicProperty = "nickname";
-      const dynamicPropertyValue = "The Izz";
+      // const i = 10;
 
-      const i = 10;
+      // const employee = {
+      //   firstName: "Lisa",
+      //   [dynamicProperty]: dynamicPropertyValue,
+      //   ["sequence" + i]: 1,
+      // };
 
-      const employee = {
-        firstName: "Lisa",
-        [dynamicProperty]: dynamicPropertyValue,
-        ["sequence" + i]: 1,
-      };
-
-      const address = {
-        country: "Poland",
-        city: "Warsaw",
-        streetNum: "102",
-        streetName: "Marszałkowska",
-      };
+      // const address = {
+      //   country: "Poland",
+      //   city: "Warsaw",
+      //   streetNum: "102",
+      //   streetName: "Marszałkowska",
+      // };
 
       // function buttonClicked() {
       //   setTimeout(showMessage, 2000);
@@ -1001,14 +1035,14 @@
       //   console.log("Ending callYouBack()");
       // }
 
-      function greetingMaker(greeting) {
-        function addName(name) {
-          return `${greeting} ${name}`;
-        }
-        return addName;
-      }
+      // function greetingMaker(greeting) {
+      //   function addName(name) {
+      //     return `${greeting} ${name}`;
+      //   }
+      //   return addName;
+      // }
 
-      const dayTimeGreeting = greetingMaker("Morning");
+      // const dayTimeGreeting = greetingMaker("Morning");
 
       // function buttonClicked() {
       //   const sentence =
@@ -1022,41 +1056,41 @@
       //   console.log(end);
       // }
 
-      function countToTen() {
-        let total = 0,
-          count = 1;
-        while (count <= 10) {
-          total += count;
-          count += 1;
-        }
-        console.log(total);
-      }
+      // function countToTen() {
+      //   let total = 0,
+      //     count = 1;
+      //   while (count <= 10) {
+      //     total += count;
+      //     count += 1;
+      //   }
+      //   console.log(total);
+      // }
 
-      let arrayOne = ["coca-cola", "pepsi-cola", "coke"];
-      let arrayTwo = ["coca-cola", "pepsi-cola", "coke"];
-      let arrayThree = ["coca-cola", "pepsi-cola", "fanta"];
+      // let arrayOne = ["coca-cola", "pepsi-cola", "coke"];
+      // let arrayTwo = ["coca-cola", "pepsi-cola", "coke"];
+      // let arrayThree = ["coca-cola", "pepsi-cola", "fanta"];
 
-      let prices = ["10", "5", "25"];
+      // let prices = ["10", "5", "25"];
 
-      function areArraysEqual(arrayA, arrayB) {
-        // First check if they are arrays
-        if (!Array.isArray(arrayA) || !Array.isArray(arrayB)) {
-          return false;
-        }
-        // Check if they are just two references pointing to the same array
-        else if (arrayA === arrayB) {
-          return true;
-        }
-        // Check if they have the same length
-        else if (arrayA.length !== arrayB.length) {
-          return false;
-        } else {
-          for (let i = 0; i < arrayA.length; ++i) {
-            if (arrayA[i] !== arrayB[i]) return false;
-          }
-          return true;
-        }
-      }
+      // function areArraysEqual(arrayA, arrayB) {
+      //   // First check if they are arrays
+      //   if (!Array.isArray(arrayA) || !Array.isArray(arrayB)) {
+      //     return false;
+      //   }
+      //   // Check if they are just two references pointing to the same array
+      //   else if (arrayA === arrayB) {
+      //     return true;
+      //   }
+      //   // Check if they have the same length
+      //   else if (arrayA.length !== arrayB.length) {
+      //     return false;
+      //   } else {
+      //     for (let i = 0; i < arrayA.length; ++i) {
+      //       if (arrayA[i] !== arrayB[i]) return false;
+      //     }
+      //     return true;
+      //   }
+      // }
     </script>
     <!-- <script src="highlighter.js"></script> -->
   </body>
