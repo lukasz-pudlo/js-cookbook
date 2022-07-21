@@ -40,23 +40,32 @@
     </button>
     <div id="counterDiv"></div>
     <p id="status"></p>
+    <img id="imgDownload" />
 
     <script>
       document.getElementById("runTest").addEventListener("click", fetchTest);
 
       function fetchTest() {
+        // fetch(
+        //   "https://upload.wikimedia.org/wikipedia/commons/b/b2/Eagle_nebula_pillars.jpg"
+        // )
+        //   .then((response) => {
+        //     console.log(`HTTP status: ${response.status}`);
+        //   })
+        //   .catch((error) => {
+        //     console.error(`Error: ${error}`);
+        //   })
+        //   .finally(() => {
+        //     console.log("All done");
+        //   });
         fetch(
           "https://upload.wikimedia.org/wikipedia/commons/b/b2/Eagle_nebula_pillars.jpg"
-            .then((response) => {
-              console.log(`HTTP status: ${response.status}`);
-            })
-            .catch((error) => {
-              console.error(`Error: ${error}`);
-            })
-            .finally(() => {
-              console.log("All done");
-            })
-        );
+        )
+          .then((response) => response.blob())
+          .then((blob) => {
+            const img = document.getElementById("imgDownload");
+            img.src = URL.createObjectURL(blob);
+          });
       }
 
       // function doWorkInChunks() {
